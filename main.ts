@@ -17,7 +17,7 @@ function cellGen (cell: number, count: number) {
 function cntNbors (num: number) {
     tot = 0
     for (let index = 0; index <= 8; index++) {
-        tot += Universe[findCell(num, neighbors[index])]
+        tot = tot + Universe[findCell(num, neighbors[index])]
     }
     return tot
 }
@@ -52,6 +52,12 @@ function showUni () {
 }
 input.onButtonPressed(Button.A, function () {
     doGen()
+})
+input.onButtonPressed(Button.AB, function () {
+    Universe[11] = 1
+    Universe[12] = 1
+    Universe[13] = 1
+    showUni()
 })
 input.onButtonPressed(Button.B, function () {
     for (let index = 0; index <= 24; index++) {
