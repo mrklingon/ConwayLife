@@ -31,6 +31,15 @@ function findCell (num: number, num2: number) {
     }
     return tot
 }
+function doGen () {
+    for (let index = 0; index <= 24; index++) {
+        cellGen(index, cntNbors(index))
+    }
+    for (let index = 0; index <= 24; index++) {
+        Universe[index] = Next[index]
+    }
+    showUni()
+}
 function showUni () {
     for (let index = 0; index <= 24; index++) {
         findCoord(index)
@@ -41,6 +50,17 @@ function showUni () {
         }
     }
 }
+input.onButtonPressed(Button.A, function () {
+    doGen()
+})
+input.onButtonPressed(Button.B, function () {
+    for (let index = 0; index <= 24; index++) {
+        if (8 < randint(0, 10)) {
+            Universe[index] = 1
+        }
+    }
+    showUni()
+})
 function findCoord (num: number) {
     sy = Math.trunc(num / 5)
     sx = num % 5
