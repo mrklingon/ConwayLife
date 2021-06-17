@@ -57,6 +57,8 @@ input.onButtonPressed(Button.AB, function () {
     Universe[11] = 1
     Universe[12] = 1
     Universe[13] = 1
+    Universe[18] = 1
+    Universe[22] = 1
     showUni()
 })
 input.onButtonPressed(Button.B, function () {
