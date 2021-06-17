@@ -16,34 +16,34 @@ function cellGen (cell: number, count: number) {
 }
 function cntNbors (num: number) {
     tot = 0
-    for (let index = 0; index <= 8; index++) {
+    for (let index = 0; index <= 7; index++) {
         tot = tot + Universe[findCell(num, neighbors[index])]
     }
     return tot
 }
 function findCell (num: number, num2: number) {
-    tot = num + num2
-    if (tot < 0) {
-        tot = tot + 25
+    total = num + num2
+    if (total < 0) {
+        total = total + 25
     }
-    if (tot > 24) {
-        tot = tot - 25
+    if (total > 24) {
+        total = total - 25
     }
-    return tot
+    return total
 }
 function doGen () {
-    for (let index = 0; index <= 24; index++) {
-        cellGen(index, cntNbors(index))
+    for (let index2 = 0; index2 <= 24; index2++) {
+        cellGen(index2, cntNbors(index2))
     }
-    for (let index = 0; index <= 24; index++) {
-        Universe[index] = Next[index]
+    for (let index3 = 0; index3 <= 24; index3++) {
+        Universe[index3] = Next[index3]
     }
     showUni()
 }
 function showUni () {
-    for (let index = 0; index <= 24; index++) {
-        findCoord(index)
-        if (Universe[index] == 0) {
+    for (let index4 = 0; index4 <= 24; index4++) {
+        findCoord(index4)
+        if (Universe[index4] == 0) {
             led.unplot(sx, sy)
         } else {
             led.plot(sx, sy)
@@ -60,9 +60,9 @@ input.onButtonPressed(Button.AB, function () {
     showUni()
 })
 input.onButtonPressed(Button.B, function () {
-    for (let index = 0; index <= 24; index++) {
+    for (let index5 = 0; index5 <= 24; index5++) {
         if (8 < randint(0, 10)) {
-            Universe[index] = 1
+            Universe[index5] = 1
         }
     }
     showUni()
@@ -73,12 +73,14 @@ function findCoord (num: number) {
 }
 let sy = 0
 let sx = 0
-let tot = 0
+let total = 0
 let nxt = 0
 let val = 0
 let Next: number[] = []
 let Universe: number[] = []
 let neighbors: number[] = []
+let tot = 0
+tot = 0
 neighbors = [-6, -5, -4, -1, 1, 4, 5, 6]
 Universe = [0]
 for (let index = 0; index < 24; index++) {
