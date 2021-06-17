@@ -54,11 +54,29 @@ input.onButtonPressed(Button.A, function () {
     doGen()
 })
 input.onButtonPressed(Button.AB, function () {
-    Universe[11] = 1
-    Universe[12] = 1
-    Universe[13] = 1
-    Universe[18] = 1
-    Universe[22] = 1
+    pattern = 1 + pattern
+    if (2 < pattern) {
+        pattern = 0
+    }
+    if (0 == pattern) {
+        Universe[11] = 1
+        Universe[12] = 1
+        Universe[13] = 1
+        Universe[18] = 1
+        Universe[22] = 1
+    }
+    if (1 == pattern) {
+        Universe[11] = 1
+        Universe[12] = 1
+        Universe[13] = 1
+    }
+    if (2 == pattern) {
+        Universe[2] = 1
+        Universe[7] = 1
+        Universe[12] = 1
+        Universe[17] = 1
+        Universe[22] = 1
+    }
     showUni()
 })
 input.onButtonPressed(Button.B, function () {
@@ -81,8 +99,10 @@ let val = 0
 let Next: number[] = []
 let Universe: number[] = []
 let neighbors: number[] = []
+let pattern = 0
 let tot = 0
 tot = 0
+pattern = 0
 neighbors = [-6, -5, -4, -1, 1, 4, 5, 6]
 Universe = [0]
 for (let index = 0; index < 24; index++) {
@@ -92,3 +112,18 @@ Next = [0]
 for (let index = 0; index < 24; index++) {
     Next.push(0)
 }
+images.createBigImage(`
+    . . . . . . . . . .
+    # . . # . # # . # #
+    # . . . . # . . # #
+    # . . # . # # . # .
+    # # . # . # . . # #
+    `).scrollImage(1, 200)
+images.createBigImage(`
+    . . . . . . . . . .
+    . . . . # # . . . .
+    . . . . # # . # # .
+    . # # . . . . # # .
+    . # # . . . . . . .
+    `).scrollImage(1, 200)
+showUni()
