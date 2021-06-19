@@ -55,7 +55,7 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.AB, function () {
     pattern = 1 + pattern
-    if (2 < pattern) {
+    if (3 < pattern) {
         pattern = 0
     }
     if (0 == pattern) {
@@ -76,6 +76,13 @@ input.onButtonPressed(Button.AB, function () {
         Universe[12] = 1
         Universe[17] = 1
         Universe[22] = 1
+    }
+    if (3 == pattern) {
+        Universe[11] = 1
+        Universe[12] = 1
+        Universe[13] = 1
+        Universe[17] = 1
+        Universe[6] = 1
     }
     showUni()
 })
