@@ -39,30 +39,37 @@ function doGen () {
         Universe[index3] = Next[index3]
     }
     showUni()
-    if (Pop == 0) {
-        Chk_Extinct()
-    }
+    Chk_Extinct()
 }
 function Chk_Extinct () {
-    basic.showString("Extinction!!!")
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
+    Pop = 0
+    for (let index = 0; index <= unisize; index++) {
+        if (1 == Universe[index]) {
+            Pop += 1
+        }
+    }
+    if (Pop == 0) {
+        basic.showIcon(IconNames.No)
+        basic.pause(100)
+        basic.showIcon(IconNames.Sad)
+        basic.pause(100)
+        music.startMelody(music.builtInMelody(Melodies.Funeral), MelodyOptions.Once)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    }
 }
 function showUni () {
-    Pop = 0
     for (let index4 = 0; index4 <= 24; index4++) {
         findCoord(index4)
         if (Universe[index4] == 0) {
             led.unplot(sx, sy)
         } else {
             led.plot(sx, sy)
-            Pop += 1
         }
     }
 }
@@ -125,6 +132,8 @@ let Universe: number[] = []
 let neighbors: number[] = []
 let pattern = 0
 let tot = 0
+let unisize = 0
+unisize = 24
 tot = 0
 pattern = 0
 neighbors = [-6, -5, -4, -1, 1, 4, 5, 6]
