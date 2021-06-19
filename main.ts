@@ -39,14 +39,30 @@ function doGen () {
         Universe[index3] = Next[index3]
     }
     showUni()
+    if (Pop == 0) {
+        Chk_Extinct()
+    }
+}
+function Chk_Extinct () {
+    basic.showString("Extinction!!!")
+    basic.pause(100)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
 }
 function showUni () {
+    Pop = 0
     for (let index4 = 0; index4 <= 24; index4++) {
         findCoord(index4)
         if (Universe[index4] == 0) {
             led.unplot(sx, sy)
         } else {
             led.plot(sx, sy)
+            Pop += 1
         }
     }
 }
@@ -100,6 +116,7 @@ function findCoord (num: number) {
 }
 let sy = 0
 let sx = 0
+let Pop = 0
 let total = 0
 let nxt = 0
 let val = 0
@@ -133,4 +150,10 @@ images.createBigImage(`
     . # # . . . . # # .
     . # # . . . . . . .
     `).scrollImage(1, 200)
-showUni()
+basic.showLeds(`
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    `)
