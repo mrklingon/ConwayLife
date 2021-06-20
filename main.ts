@@ -152,10 +152,10 @@ for (let index = 0; index < 24; index++) {
     Next.push(0)
 }
 images.createBigImage(`
-    . . . . . . . . . .
     # . . # . # # . # #
-    # . . . . # . . # #
-    # . . # . # # . # .
+    # . . . . # . . # .
+    # . . # . # # . # #
+    # . . # . # . . # .
     # # . # . # . . # #
     `).scrollImage(1, 200)
 images.createBigImage(`
