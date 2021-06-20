@@ -117,6 +117,11 @@ input.onButtonPressed(Button.B, function () {
     }
     showUni()
 })
+input.onGesture(Gesture.Shake, function () {
+    Chk_Extinct()
+    basic.showString("Pop:")
+    basic.showString(convertToText(Pop))
+})
 function findCoord (num: number) {
     sy = Math.trunc(num / 5)
     sx = num % 5
